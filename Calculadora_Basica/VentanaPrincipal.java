@@ -1,6 +1,7 @@
 /**
 
 @author Jesus Barajas, jebarfig21
+@version 1.00.0
 Clase que abre una ventana, aqui mismo se encuentra el controlador del programa
 
 Es una calculadora simple para 2 números, y realiza las operacion de Suma, Resta, Multiplicacion, División, Potencia
@@ -33,6 +34,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private JButton resta;      //boton para restar
     private JButton exponente;  //boton para elevar el num1 a la num2 potencia
 
+    
+    /**
+       Método Constructor
+     **/
+    
     public VentanaPrincipal() {
 	super();                   //constructor principal de la clade padre JFrame
 	configurarVentana();       //método para darle estilo a la ventana
@@ -40,7 +46,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     } 
 
 
-
+    /**
+      Méotodo para configurar la ventana
+     @param empty
+     @return void
+     **/
 
     private void configurarVentana(){
 	int ancho = 500;
@@ -54,20 +64,29 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	
     }
 
-    private void inicializarComponentes() {
-	//incicalizar atributos
-	text = new JLabel();
-	text_num1 = new JLabel();
-	text_num2 = new JLabel();
-	num1 = new JTextField();
-	num2 = new JTextField();
-	suma = new JButton();
-	multiplica = new JButton();
-	divide = new JButton();
-	resta = new JButton();
-	exponente = new JButton();
 
-	//Asigar valores
+    
+    /**
+      Méotodo para configurar los atributos
+     @param empty
+     @return void
+     **/
+
+    private void inicializarComponentes() {
+	//inicializar atributos
+	text = new JLabel();        //mensaje de bienvenida
+	text_num1 = new JLabel();   //pedir primer numero
+	text_num2 = new JLabel();   //pedir segundo numero
+	num1 = new JTextField();    //ingresar primer numero
+	num2 = new JTextField();    //ingresar segundo numero
+	suma = new JButton();       //boton suma
+	multiplica = new JButton(); //boton multiplica
+	divide = new JButton();     //boton divide
+	resta = new JButton();      //boton resta
+	exponente = new JButton();  //boton de exponente
+
+	//TEXTOS
+	
 	text.setText("Bienvenido a tu primer calculadora"); // Colocamos texto a la etiqueta
 	text.setBounds(25,25,250,25); //tamaño y posicion de text
 
@@ -79,8 +98,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	text_num2.setBounds(25,110,200,25); //tamaño y posicion de text
 	num2.setBounds(25,140,100,25);//tamaño y posicion de num1
 
-
-	
 	//BOTONES
 	
 	suma.setText("Sumar"); //Boton para sumar
@@ -102,8 +119,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	exponente.setText("Potencia");//Boton para multiplicar
 	exponente.setBounds(300,145,150,25);
 	exponente.addActionListener(this);
-	
-	
+		
 	
 	//SHOW IN JFRAME
 	this.add(text);
@@ -118,7 +134,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	this.add(exponente);
 	
     }
-
+    /**
+       Método que le da accion a los botones
+       @param empty
+       @return void
+    **/
     @Override
     public void actionPerformed(ActionEvent e){
 	String numero1 = num1.getText();
@@ -126,27 +146,27 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	String Str="0";
 	float num=0;
 	Object fuente = e.getSource();
-
+	
 	if(fuente == suma){
 	    num = (Float.parseFloat(numero1))+(Float.parseFloat(numero2));
 	    Str = String.valueOf(num);
 	}
-
+	
 	if(fuente == multiplica){
 	    num = (Float.parseFloat(numero1))*(Float.parseFloat(numero2));
 	    Str = String.valueOf(num);
 	}
-
+	
 	if(fuente == divide){
 	    num = (Float.parseFloat(numero1))/(Float.parseFloat(numero2));
 	    Str = String.valueOf(num);
 	}
-
+	
 	if(fuente == resta){
 	    num = (Float.parseFloat(numero1))-(Float.parseFloat(numero2));
 	    Str = String.valueOf(num);
 	}
-
+	
 	if(fuente == exponente){
 	    num = (float)(Math.pow((Integer.parseInt(numero1)),(Integer.parseInt(numero2))));
 	    Str = String.valueOf(num);
@@ -154,6 +174,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	
 	JOptionPane.showMessageDialog(this, "Resultado : "+Str);
     }
-
+    
 }
 
